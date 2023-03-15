@@ -1,0 +1,5 @@
+Find the commands to:
+
+1. Output a list of installed packages and their versions: pip list.
+
+2. Show the package metadata of numpy 
