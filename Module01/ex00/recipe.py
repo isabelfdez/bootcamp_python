@@ -19,9 +19,23 @@ class Recipe:
             if cook_time < 0:
                 raise Exception("Moron ! Time is not negative...")
             if len(ingr) == 0:
-                raise Exception("No ingredients required?")
+                raise Exception("How can you cook with no ingredients?")
             if recipe_type not in ['lunch', 'starter', 'dessert']:
-                raise Exception("Recipe type not correct, choose 'starter' or 'lunch' or 'dessert'")
+                raise Exception("Recipe type not correct, choose 'starter', 'lunch' or 'dessert'")
         except (Exception, ValueError) as e:
             print("Recipy exception raised:", repr(e))
             exit()
+    def __str__(self):
+        '''
+        Return the string to print with the recipe info
+        '''
+        txt = "Name: " + self.name + ", Cooking level: " + str(self.cooking_lvl) + ", Cooking time: " + str(self.cooking_time) + ", Ingredients: "
+        for ing in self.ingredients:
+            txt += ing + " ,"
+            
+        txt += "Description: " + self.description + ", Recipe type: " + self.recipe_type
+        return txt
+
+tourte = Recipe("Galletas", 2, 20, ["Harina", "levadura", "huevos"], "Deliciosas y crujientes", "lunch")
+to_print = str(tourte)
+print(to_print)

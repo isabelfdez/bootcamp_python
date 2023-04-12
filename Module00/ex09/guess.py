@@ -1,4 +1,5 @@
 import random
+import sys
 
 nb = random.randint(1, 99)
 attempts = 1
@@ -9,10 +10,15 @@ print("Good luck!")
 print("")
 
 while True:
-    guess = input("What's your guess between 1 and 99? ")
+    try:
+        guess = input("What's your guess between 1 and 99? ")
+    except EOFError:
+        print()
+        print("Goodbye!")
+        sys.exit(0) 
     if (guess == "exit"):
         print("Goodbye!")
-        quit() 
+        sys.exit(0) 
     try:
         guess = int(guess)
     except:
@@ -30,5 +36,5 @@ while True:
         if (nb == 42):
             print("The answer to the ultimate question of life, the universe and everything is 42.")
         print("You won in " + str(attempts) + " attempts!")
-        quit()
+        sys.exit(0)
     attempts += 1

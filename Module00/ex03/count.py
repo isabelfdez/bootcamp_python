@@ -32,6 +32,8 @@ def text_analyzer(my_string = None):
         print("- " + str(punctuation) + " punctuation mark(s)")
         print("- " + str(spaces) + " space(s)")
 
+# This block of code will only be executed when your file is executed as a script.
+
 if __name__ == "__main__":
     if (len(sys.argv) is not 2):
         print("Invalid number of arguments")

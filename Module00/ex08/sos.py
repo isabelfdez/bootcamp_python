@@ -41,10 +41,16 @@ morse = {
 }
 
 if (len(sys.argv) < 2):
-    quit()
+    print("No arguments were given")
+    sys.exit(0)
 if (len(sys.argv) > 2):
     txt = ' '.join(sys.argv[1:len(sys.argv)])
 else:
     txt = sys.argv[1]
 for c in txt:
-    print(morse[c.upper()], end = " ")
+    if (morse.get(c.upper()) == None):
+        print("Invalid characters. Text cannot be converted into Morse code")
+        sys.exit(0)
+for c in txt:
+    print(morse.get(c.upper()), end = " ")
+print()

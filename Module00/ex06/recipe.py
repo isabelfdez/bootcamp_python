@@ -1,9 +1,20 @@
+import sys
+
 cookbook = {'Sandwich' : {'ingredients' : ['ham', 'bread', 'cheese'],
                         'meal' : 'lunch', 'prep_time': 10},
             'Cake' : {'ingredients' : ['flour', 'sugar', 'eggs'],
                         'meal' : 'dessert', 'prep_time': 60},
             'Salad' : {'ingredients' : ['avocado', 'argula', 'tomatoes', 'spinach'],
                         'meal' : 'lunch', 'prep_time': 15}}
+
+def take_input(text) -> str:
+    try:
+        txt = input(text)
+    except EOFError:
+        print()
+        print("Cookbook closed. Goodbye !")
+        sys.exit(0)
+    return txt
 
 def print_recipes_names():
     print(cookbook.keys())
@@ -22,13 +33,21 @@ def add_recipe():
     print("Enter ingredients: ", end = "")
     ingredients = []
     while True:
-        line = input()
+        line = take_input("")
         if (line == ""):
             break
         ingredients.append(line)
-    type = input("Enter a meal type: ")
-    time = input("Enter a preparation time: ")
-    value = {'ingredients' : ingredients, 'meal' : type, 'prep_time': int(time)}
+    type = take_input("Enter a meal type: ")
+    if (type.isalpha() == 0):
+        print("Argument is not a string. Recipe could not be added.")
+        return
+    time = take_input("Enter a preparation time: ")
+    try:
+        nb = int(time)
+    except:
+        print("Argument is not an integer. Recipe could not be added.")
+        return
+    value = {'ingredients' : ingredients, 'meal' : type, 'prep_time': nb}
     cookbook[name] = value
 
 print("Welcome to the Python Cookbook !")
@@ -40,7 +59,7 @@ print("4: Print the cookbook")
 print("5: Quit")
 
 while True:
-    option = input("Please select an option: ")
+    option = take_input("Please select an option: ")
     try:
         int_option = int(option)
     except:
@@ -63,15 +82,15 @@ while True:
     if (int_option == 1):
         add_recipe()
     elif (int_option == 2):
-        recipe = input("Please enter a recipe name to delete it: ")
+        recipe = take_input("Please enter a recipe name to delete it: ")
         delete_recipe(recipe)
     elif (int_option == 3):
-        recipe = input("Please enter a recipe name to get its details: ")
+        recipe = take_input("Please enter a recipe name to get its details: ")
         print_recipe_details(recipe)
     elif (int_option == 4):
         for recipe in cookbook.keys():
             print_recipe_details(recipe)
     elif (int_option == 5):
         print("Cookbook closed. Goodbye !")
-        quit()
+        sys.exit(0)
 

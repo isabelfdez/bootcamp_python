@@ -1,12 +1,12 @@
 import sys
 
-if (len(sys.argv) is 1):
+if (len(sys.argv) == 1):
     print("Usage: python operations.py <number1> <number2>")
     print("Example: python operations.py 10 3")
-elif (len(sys.argv) is not 3):
+elif (len(sys.argv) != 3):
     print("Incorrect number of arguments")
 else:
-    if (type(sys.argv[1]) is not str or type(sys.argv[2]) is not str):
+    if (sys.argv[1].isdigit() == 0 or sys.argv[2].isdigit() == 0):
         print("Only integers are accepted as arguments")
     else:
         a = int(sys.argv[1])

@@ -13,7 +13,7 @@ import time
 timer = time.time()
 
 def ft_progress(list):
-    to_print = range(0, len(list), int(len(list) / 30))
+    to_print = range(0, len(list), int(len(list) / 30)
     for i in list:
         print("[", str("%.2f" % (100 * (i + 1) / len(list))).rjust(6), "% ] [", end = "")
         for j in to_print:
