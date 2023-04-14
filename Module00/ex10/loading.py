@@ -16,19 +16,18 @@ def ft_progress(list):
     to_print = range(0, len(list), min(int(len(list) / 30) + 1, 30))
     for i2 in list:
         i = abs(i2)
-        print("[", str("%.2f" % (100 * (i + 1) / len(list))).rjust(6), "% ] [", end = "")
+        print("\r[", str("%.2f" % (100 * (i + 1) / len(list))).rjust(6), "% ] [", end="")
         for j in to_print:
             if j <= i:
-                sys.stdout.write("=")
+                print("=", end="")
         print(">", end = "")
         for j in to_print:
             if j > i:
-                sys.stdout.write(" ")
+                print(" ", end="")
         elapsedTime = time.time() - timer;
         estimatedRemaining = (len(list) - (i / (abs(list[1] - list[0]) if len(list) > 1 else 1) + 1)) * elapsedTime / (i + 1);
         print("] | ", str((i - abs(list[0])) / (abs(list[1] - list[0]) if len(list) > 1 else 1) + 1).rjust(4), "/", str(len(list)), " |  elapsed time:", str("%.2f" % (time.time() - timer)), 
             " | ETA:", str("%.2f" % estimatedRemaining).rjust(6), end='\r')
-        yield i
-
+        yield i2
 
     
