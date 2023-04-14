@@ -1,3 +1,10 @@
-kata = (19,42,21)
+import sys
 
-print("The 3 numbers are: " + str(kata[0]) + ", " + str(kata[1]) + ", " + str(kata[2]))
+kata = (19, 42, 3)
+
+size = len(kata)
+if (size == 0):
+    print("Tuple is empty")
+    sys.exit(0)
+
+print(f"The {size} numbers are:", ", ".join(map(str, kata)))

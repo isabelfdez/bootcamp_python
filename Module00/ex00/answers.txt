@@ -1,6 +1,6 @@
 Find the commands to:
 
-1. Output a list of installed packages and their versions: pip3 list.
+1. Output a list of installed packages and their versions: conda list.
 
 2. Show the package metadata of numpy: conda search -i numpy
 

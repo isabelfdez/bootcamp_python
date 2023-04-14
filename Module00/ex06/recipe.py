@@ -20,16 +20,20 @@ def print_recipes_names():
     print(cookbook.keys())
 
 def print_recipe_details(recipe):
+    if (cookbook.get(recipe) == None):
+        return print("Recipe does not exist")
     print("Recipe for " + recipe + ": ")
     print("Ingredients list: ", cookbook[recipe]['ingredients'])
     print("To be eaten for " + cookbook[recipe]['meal'] + ".")
     print("Takes " + str(cookbook[recipe]['prep_time']) + " minutes of cooking.")
 
 def delete_recipe(recipe):
+    if (cookbook.get(recipe) == None):
+        return print("Recipe does not exist")
     del cookbook[recipe]
 
 def add_recipe():
-    name = input("Enter a name: ")
+    name = take_input("Enter a name: ")
     print("Enter ingredients: ", end = "")
     ingredients = []
     while True:

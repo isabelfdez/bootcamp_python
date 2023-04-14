@@ -20,7 +20,7 @@ while True:
         print("Goodbye!")
         sys.exit(0) 
     try:
-        guess = int(guess)
+        guess = float(guess)
     except:
         print("That's not a number.")
         continue

@@ -35,8 +35,11 @@ def text_analyzer(my_string = None):
 # This block of code will only be executed when your file is executed as a script.
 
 if __name__ == "__main__":
-    if (len(sys.argv) is not 2):
-        print("Invalid number of arguments")
+    if (len(sys.argv) > 2):
+        print("Too many arguments.")
+        sys.exit(0)
+    if (len(sys.argv) < 2):
+        text_analyzer()
     else:
         text_analyzer(sys.argv[1])
 

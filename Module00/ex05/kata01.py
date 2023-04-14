@@ -4,10 +4,8 @@ kata = {
 'PHP': 'Rasmus Lerdorf',
 }
 
-keys = list(kata.keys())
-values = list(kata.values())
-
-print(keys[0] + " was created by " + values[0])
-print(keys[1] + " was created by " + values[1])
-print(keys[2] + " was created by " + values[2])
+print("First method:")
+print('\n'.join('{} was created by {}'.format(key, value) for key, value in kata.items()))
+print("\nSecond method:")
+print('\n'.join(f'{key} was created by {value}' for key, value in kata.items()))
 
